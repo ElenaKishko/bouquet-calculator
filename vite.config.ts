@@ -26,7 +26,7 @@ export default defineConfig({
       includeAssets: ['favicon.svg', 'apple-touch-icon-180x180.png'],
       manifest: {
         name: 'Bouquet Calculator',
-        short_name: 'Bouquet',
+        short_name: 'Bouquet Calculator',
         description: 'Dictate a bouquet and get its price.',
         theme_color: '#0f6e56',
         background_color: '#f7f5f0',
