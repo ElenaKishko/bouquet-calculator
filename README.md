@@ -26,10 +26,11 @@ npm run catalog    # rebuild src/data/catalog.json from data/catalog-draft.xlsx
 
 ## Publishing
 
-The app is published on GitHub Pages: **https://elenakishko.github.io/bouquet-calculator/**
+The app is published on GitHub Pages: **https://bouquetprice.github.io/**
+(repository `bouquetprice/bouquetprice.github.io`, organization owned by the author's account)
 
-Every push to `main` runs `.github/workflows/deploy.yml`: tests, build (with the
-repository path as the base URL), deploy. Installed apps then show
+Every push to `main` runs `.github/workflows/deploy.yml`: tests, build (at the site
+root for a `<owner>.github.io` repository, otherwise under `/<repository>/`), deploy. Installed apps then show
 "A new version is ready" and update when the florist taps it.
 
 ## Testing a build on a phone before publishing
