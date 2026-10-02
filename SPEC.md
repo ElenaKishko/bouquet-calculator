@@ -208,6 +208,14 @@ Each item has:
   are ignored while a panel is open, while recording, in input fields, and at
   the screen edges (system gestures).
 
+## 10b. Visual design (planned)
+
+- Light, pleasant, neutral tones. Two themes — light and dark — following the
+  phone's setting.
+- New app icon in the same style.
+- Process: the user sends 2–4 references → a page with 2–3 design directions
+  and 3–4 icon options → the user picks → implemented across the app.
+
 ## 10a. Photos
 
 - Photos are required (catalog screen). Each item can have one photo.
