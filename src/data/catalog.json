@@ -1,0 +1,1029 @@
+[
+  {
+    "id": "alstroemeria",
+    "category": "flower",
+    "names": {
+      "he": "אלסטרומריה",
+      "ru": "Альстромерия",
+      "en": "Alstroemeria"
+    },
+    "aliases": [],
+    "boughtAs": "stem"
+  },
+  {
+    "id": "lisianthus",
+    "category": "flower",
+    "names": {
+      "he": "ליזיאנטוס",
+      "ru": "Эустома",
+      "en": "Lisianthus"
+    },
+    "aliases": [
+      "лизиантус",
+      "eustoma"
+    ],
+    "boughtAs": "stem"
+  },
+  {
+    "id": "chrysanthemum-spray-extra",
+    "category": "flower",
+    "names": {
+      "he": "חרצית",
+      "ru": "Хризантема кустовая",
+      "en": "Spray chrysanthemum"
+    },
+    "aliases": [
+      "חרציות",
+      "חרצית ענף",
+      "חרציות אקסטרה",
+      "хризантема"
+    ],
+    "boughtAs": "stem"
+  },
+  {
+    "id": "chrysanthemum-spray-grade-a",
+    "category": "flower",
+    "names": {
+      "he": "חרציות א׳",
+      "ru": "Хризантема кустовая (сорт А)",
+      "en": "Spray chrysanthemum (grade A)"
+    },
+    "aliases": [
+      "רגולסקי",
+      "בן צבי"
+    ],
+    "boughtAs": "stem"
+  },
+  {
+    "id": "chrysanthemum-disbud",
+    "category": "flower",
+    "names": {
+      "he": "חרצית ראש",
+      "ru": "Хризантема одноголовая",
+      "en": "Disbud chrysanthemum"
+    },
+    "aliases": [
+      "חרצית חד ראשית",
+      "одноголовая"
+    ],
+    "boughtAs": "stem"
+  },
+  {
+    "id": "chrysanthemum-santini",
+    "category": "flower",
+    "names": {
+      "he": "חרצית סנטיני",
+      "ru": "Хризантема сантини",
+      "en": "Santini chrysanthemum"
+    },
+    "aliases": [],
+    "boughtAs": "stem"
+  },
+  {
+    "id": "hydrangea",
+    "category": "flower",
+    "names": {
+      "he": "הורטנזיה",
+      "ru": "Гортензия",
+      "en": "Hydrangea"
+    },
+    "aliases": [
+      "הידרנגאה"
+    ],
+    "boughtAs": "stem"
+  },
+  {
+    "id": "peony",
+    "category": "flower",
+    "names": {
+      "he": "אדמונית",
+      "ru": "Пион",
+      "en": "Peony"
+    },
+    "aliases": [
+      "פיוני"
+    ],
+    "boughtAs": "stem"
+  },
+  {
+    "id": "peony-imported",
+    "category": "flower",
+    "names": {
+      "he": "אדמונית יבוא",
+      "ru": "Пион импортный",
+      "en": "Peony (imported)"
+    },
+    "aliases": [
+      "פיוני"
+    ],
+    "boughtAs": "stem"
+  },
+  {
+    "id": "rose-avalanche",
+    "category": "flower",
+    "names": {
+      "he": "ורד אוולנש",
+      "ru": "Роза «Аваланж»",
+      "en": "Rose 'Avalanche'"
+    },
+    "aliases": [],
+    "boughtAs": "stem",
+    "group": "rose"
+  },
+  {
+    "id": "rose-revival",
+    "category": "flower",
+    "names": {
+      "he": "ורד ריבייבל",
+      "ru": "Роза «Ривайвл»",
+      "en": "Rose 'Revival'"
+    },
+    "aliases": [],
+    "boughtAs": "stem",
+    "group": "rose"
+  },
+  {
+    "id": "rose-milva",
+    "category": "flower",
+    "names": {
+      "he": "ורד מילווה",
+      "ru": "Роза «Мильва»",
+      "en": "Rose 'Milva'"
+    },
+    "aliases": [],
+    "boughtAs": "stem",
+    "group": "rose"
+  },
+  {
+    "id": "rose-cool-water",
+    "category": "flower",
+    "names": {
+      "he": "ורד קול ווטר",
+      "ru": "Роза «Кул Вотер»",
+      "en": "Rose 'Cool Water'"
+    },
+    "aliases": [],
+    "boughtAs": "stem",
+    "group": "rose"
+  },
+  {
+    "id": "spray-rose",
+    "category": "flower",
+    "names": {
+      "he": "ורד ספריי",
+      "ru": "Роза кустовая",
+      "en": "Spray rose"
+    },
+    "aliases": [
+      "ורד ענף",
+      "ורד ספרי"
+    ],
+    "boughtAs": "stem"
+  },
+  {
+    "id": "rose",
+    "category": "flower",
+    "names": {
+      "he": "ורד",
+      "ru": "Роза",
+      "en": "Rose (variety not named)"
+    },
+    "aliases": [
+      "ורדים",
+      "роза",
+      "rose"
+    ],
+    "boughtAs": "stem",
+    "priceRule": {
+      "averageOfGroup": "rose"
+    }
+  },
+  {
+    "id": "rose-english",
+    "category": "flower",
+    "names": {
+      "he": "ורד אנגלי",
+      "ru": "Роза английская",
+      "en": "English rose"
+    },
+    "aliases": [],
+    "boughtAs": "stem"
+  },
+  {
+    "id": "gerbera",
+    "category": "flower",
+    "names": {
+      "he": "גרברה",
+      "ru": "Гербера",
+      "en": "Gerbera"
+    },
+    "aliases": [],
+    "boughtAs": "stem"
+  },
+  {
+    "id": "carnation",
+    "category": "flower",
+    "names": {
+      "he": "ציפורן",
+      "ru": "Гвоздика",
+      "en": "Carnation"
+    },
+    "aliases": [],
+    "boughtAs": "stem"
+  },
+  {
+    "id": "delphinium",
+    "category": "flower",
+    "names": {
+      "he": "דולפיניום",
+      "ru": "Дельфиниум",
+      "en": "Delphinium"
+    },
+    "aliases": [
+      "דלפיניום",
+      "בלדונה"
+    ],
+    "boughtAs": "stem"
+  },
+  {
+    "id": "tweedia",
+    "category": "flower",
+    "names": {
+      "he": "טווידה",
+      "ru": "Твидия",
+      "en": "Tweedia"
+    },
+    "aliases": [],
+    "boughtAs": "stem"
+  },
+  {
+    "id": "matricaria",
+    "category": "flower",
+    "names": {
+      "he": "בבונג",
+      "ru": "Матрикария (ромашка)",
+      "en": "Matricaria (chamomile)"
+    },
+    "aliases": [
+      "קמומיל",
+      "ромашка"
+    ],
+    "boughtAs": "stem"
+  },
+  {
+    "id": "sunflower-van-gogh",
+    "category": "flower",
+    "names": {
+      "he": "חמניות ואן גוך",
+      "ru": "Подсолнух «Ван Гог»",
+      "en": "Sunflower 'Van Gogh'"
+    },
+    "aliases": [
+      "חמנייה"
+    ],
+    "boughtAs": "stem"
+  },
+  {
+    "id": "sunflower-large",
+    "category": "flower",
+    "names": {
+      "he": "חמניות גדולות",
+      "ru": "Подсолнух крупный",
+      "en": "Sunflower (large)"
+    },
+    "aliases": [
+      "חמנייה"
+    ],
+    "boughtAs": "stem"
+  },
+  {
+    "id": "aster",
+    "category": "flower",
+    "names": {
+      "he": "אסטר",
+      "ru": "Астра",
+      "en": "Aster"
+    },
+    "aliases": [],
+    "boughtAs": "stem"
+  },
+  {
+    "id": "achillea",
+    "category": "flower",
+    "names": {
+      "he": "אכילאה",
+      "ru": "Ахиллея (тысячелистник)",
+      "en": "Achillea (yarrow)"
+    },
+    "aliases": [
+      "פרקר"
+    ],
+    "boughtAs": "stem"
+  },
+  {
+    "id": "kangaroo-paw",
+    "category": "flower",
+    "names": {
+      "he": "כף קנגרו",
+      "ru": "Анигозантос (кенгуровая лапка)",
+      "en": "Kangaroo paw"
+    },
+    "aliases": [],
+    "boughtAs": "stem"
+  },
+  {
+    "id": "snapdragon",
+    "category": "flower",
+    "names": {
+      "he": "לוע ארי",
+      "ru": "Львиный зев",
+      "en": "Snapdragon"
+    },
+    "aliases": [
+      "לוע הארי",
+      "антирринум"
+    ],
+    "boughtAs": "stem"
+  },
+  {
+    "id": "curcuma",
+    "category": "flower",
+    "names": {
+      "he": "קורקומה",
+      "ru": "Куркума",
+      "en": "Curcuma"
+    },
+    "aliases": [],
+    "boughtAs": "stem"
+  },
+  {
+    "id": "helenium",
+    "category": "flower",
+    "names": {
+      "he": "הלניום",
+      "ru": "Гелениум",
+      "en": "Helenium"
+    },
+    "aliases": [],
+    "boughtAs": "stem"
+  },
+  {
+    "id": "celosia",
+    "category": "flower",
+    "names": {
+      "he": "כרבולת",
+      "ru": "Целозия",
+      "en": "Celosia"
+    },
+    "aliases": [
+      "צלוזיה"
+    ],
+    "boughtAs": "stem"
+  },
+  {
+    "id": "liliot",
+    "category": "flower",
+    "names": {
+      "he": "ליליות",
+      "ru": "Лилия",
+      "en": "Lily"
+    },
+    "aliases": [
+      "שושן",
+      "лилия"
+    ],
+    "boughtAs": "stem"
+  },
+  {
+    "id": "liliot-sweet-sugar",
+    "category": "flower",
+    "names": {
+      "he": "ליליות סוויט שוגר",
+      "ru": "Лилия «Свит Шугар»",
+      "en": "Lily 'Sweet Sugar'"
+    },
+    "aliases": [
+      "sweet sugar"
+    ],
+    "boughtAs": "stem"
+  },
+  {
+    "id": "calla",
+    "category": "flower",
+    "names": {
+      "he": "קאלה",
+      "ru": "Калла",
+      "en": "Calla"
+    },
+    "aliases": [
+      "קאלות"
+    ],
+    "boughtAs": "stem"
+  },
+  {
+    "id": "carthamus",
+    "category": "flower",
+    "names": {
+      "he": "קרטמוס",
+      "ru": "Сафлор (картамус)",
+      "en": "Carthamus (safflower)"
+    },
+    "aliases": [],
+    "boughtAs": "stem"
+  },
+  {
+    "id": "solidago",
+    "category": "flower",
+    "names": {
+      "he": "סולידגו",
+      "ru": "Солидаго",
+      "en": "Solidago"
+    },
+    "aliases": [
+      "סאן גלורי"
+    ],
+    "boughtAs": "stem"
+  },
+  {
+    "id": "dahlia",
+    "category": "flower",
+    "names": {
+      "he": "דליה",
+      "ru": "Георгин",
+      "en": "Dahlia"
+    },
+    "aliases": [],
+    "boughtAs": "stem"
+  },
+  {
+    "id": "craspedia",
+    "category": "flower",
+    "names": {
+      "he": "קרספדיה",
+      "ru": "Краспедия",
+      "en": "Craspedia"
+    },
+    "aliases": [],
+    "boughtAs": "stem"
+  },
+  {
+    "id": "grevillea-flowering",
+    "category": "flower",
+    "names": {
+      "he": "גרבילאה פורחת",
+      "ru": "Гревиллея цветущая",
+      "en": "Grevillea (flowering)"
+    },
+    "aliases": [],
+    "boughtAs": "stem"
+  },
+  {
+    "id": "limonium-emille",
+    "category": "flower",
+    "names": {
+      "he": "לימוניום אמילי",
+      "ru": "Лимониум «Эмили»",
+      "en": "Limonium 'Emille'"
+    },
+    "aliases": [
+      "לימוניום",
+      "статица"
+    ],
+    "boughtAs": "bunch"
+  },
+  {
+    "id": "limonium-sensi",
+    "category": "flower",
+    "names": {
+      "he": "לימוניום סנסי",
+      "ru": "Лимониум «Сенси»",
+      "en": "Limonium 'Sensi'"
+    },
+    "aliases": [],
+    "boughtAs": "bunch"
+  },
+  {
+    "id": "anan",
+    "category": "flower",
+    "names": {
+      "he": "ענן"
+    },
+    "aliases": [],
+    "boughtAs": "bunch"
+  },
+  {
+    "id": "lepidium-green-bell",
+    "category": "greenery",
+    "names": {
+      "he": "גרין בל",
+      "ru": "Лепидиум",
+      "en": "Lepidium 'Green Bell'"
+    },
+    "aliases": [
+      "עופרים",
+      "לפידיום",
+      "офарим"
+    ],
+    "boughtAs": "bunch"
+  },
+  {
+    "id": "eucalyptus-pulverulenta",
+    "category": "greenery",
+    "names": {
+      "he": "אקליפטוס",
+      "ru": "Эвкалипт",
+      "en": "Eucalyptus"
+    },
+    "aliases": [
+      "פרובלנטה",
+      "эвкалипт"
+    ],
+    "boughtAs": "stem"
+  },
+  {
+    "id": "aralia",
+    "category": "greenery",
+    "names": {
+      "he": "ארליה",
+      "ru": "Аралия (фатсия)",
+      "en": "Aralia (fatsia) leaf"
+    },
+    "aliases": [
+      "אצבעות"
+    ],
+    "boughtAs": "stem"
+  },
+  {
+    "id": "grevillea-foliage",
+    "category": "greenery",
+    "names": {
+      "he": "גרבילאה עלים",
+      "ru": "Гревиллея (листья)",
+      "en": "Grevillea (foliage)"
+    },
+    "aliases": [],
+    "boughtAs": "stem"
+  },
+  {
+    "id": "asparagus",
+    "category": "greenery",
+    "names": {
+      "he": "אספרגוס",
+      "ru": "Аспарагус",
+      "en": "Asparagus fern"
+    },
+    "aliases": [
+      "פלומוזוס"
+    ],
+    "boughtAs": "stem"
+  },
+  {
+    "id": "leatherleaf-fern",
+    "category": "greenery",
+    "names": {
+      "he": "שרך ברזל",
+      "ru": "Папоротник (румора)",
+      "en": "Leatherleaf fern"
+    },
+    "aliases": [
+      "שרך"
+    ],
+    "boughtAs": "stem"
+  },
+  {
+    "id": "tulip",
+    "category": "flower",
+    "names": {
+      "he": "צבעוני",
+      "ru": "Тюльпан",
+      "en": "Tulip"
+    },
+    "aliases": [],
+    "boughtAs": "stem"
+  },
+  {
+    "id": "ranunculus",
+    "category": "flower",
+    "names": {
+      "he": "נורית",
+      "ru": "Ранункулюс",
+      "en": "Ranunculus"
+    },
+    "aliases": [
+      "רנונקולוס"
+    ],
+    "boughtAs": "stem"
+  },
+  {
+    "id": "anemone",
+    "category": "flower",
+    "names": {
+      "he": "כלנית",
+      "ru": "Анемона",
+      "en": "Anemone"
+    },
+    "aliases": [],
+    "boughtAs": "stem"
+  },
+  {
+    "id": "freesia",
+    "category": "flower",
+    "names": {
+      "he": "פרזיה",
+      "ru": "Фрезия",
+      "en": "Freesia"
+    },
+    "aliases": [],
+    "boughtAs": "stem"
+  },
+  {
+    "id": "gladiolus",
+    "category": "flower",
+    "names": {
+      "he": "גלדיולה",
+      "ru": "Гладиолус",
+      "en": "Gladiolus"
+    },
+    "aliases": [],
+    "boughtAs": "stem"
+  },
+  {
+    "id": "iris",
+    "category": "flower",
+    "names": {
+      "he": "אירוס",
+      "ru": "Ирис",
+      "en": "Iris"
+    },
+    "aliases": [],
+    "boughtAs": "stem"
+  },
+  {
+    "id": "orchid-cymbidium",
+    "category": "flower",
+    "names": {
+      "he": "סחלב סימבידיום",
+      "ru": "Орхидея цимбидиум",
+      "en": "Cymbidium orchid"
+    },
+    "aliases": [
+      "סחלב"
+    ],
+    "boughtAs": "stem"
+  },
+  {
+    "id": "protea",
+    "category": "flower",
+    "names": {
+      "he": "פרוטאה",
+      "ru": "Протея",
+      "en": "Protea"
+    },
+    "aliases": [],
+    "boughtAs": "stem"
+  },
+  {
+    "id": "leucadendron",
+    "category": "flower",
+    "names": {
+      "he": "לויקדנדרון",
+      "ru": "Леукадендрон",
+      "en": "Leucadendron"
+    },
+    "aliases": [],
+    "boughtAs": "stem"
+  },
+  {
+    "id": "stock",
+    "category": "flower",
+    "names": {
+      "he": "מנתור",
+      "ru": "Маттиола",
+      "en": "Stock (Matthiola)"
+    },
+    "aliases": [],
+    "boughtAs": "stem"
+  },
+  {
+    "id": "gypsophila",
+    "category": "flower",
+    "names": {
+      "he": "גיפסופילה",
+      "ru": "Гипсофила",
+      "en": "Gypsophila"
+    },
+    "aliases": [
+      "גיבסנית"
+    ],
+    "boughtAs": "stem"
+  },
+  {
+    "id": "hypericum",
+    "category": "flower",
+    "names": {
+      "he": "היפריקום",
+      "ru": "Гиперикум",
+      "en": "Hypericum"
+    },
+    "aliases": [],
+    "boughtAs": "stem"
+  },
+  {
+    "id": "scabiosa",
+    "category": "flower",
+    "names": {
+      "he": "סקביוזה",
+      "ru": "Скабиоза",
+      "en": "Scabiosa"
+    },
+    "aliases": [
+      "תגית"
+    ],
+    "boughtAs": "stem"
+  },
+  {
+    "id": "eryngium",
+    "category": "flower",
+    "names": {
+      "he": "חרחבינה",
+      "ru": "Эрингиум",
+      "en": "Eryngium"
+    },
+    "aliases": [],
+    "boughtAs": "stem"
+  },
+  {
+    "id": "waxflower",
+    "category": "flower",
+    "names": {
+      "he": "שעוונית",
+      "ru": "Восковой цветок (хамелациум)",
+      "en": "Waxflower"
+    },
+    "aliases": [],
+    "boughtAs": "stem"
+  },
+  {
+    "id": "spray-carnation",
+    "category": "flower",
+    "names": {
+      "he": "ציפורן ענף",
+      "ru": "Гвоздика кустовая",
+      "en": "Spray carnation"
+    },
+    "aliases": [],
+    "boughtAs": "stem"
+  },
+  {
+    "id": "amaranthus",
+    "category": "flower",
+    "names": {
+      "he": "ירבוז",
+      "ru": "Амарант",
+      "en": "Amaranthus"
+    },
+    "aliases": [
+      "אמרנטוס"
+    ],
+    "boughtAs": "stem"
+  },
+  {
+    "id": "allium",
+    "category": "flower",
+    "names": {
+      "he": "שום נוי",
+      "ru": "Аллиум",
+      "en": "Allium"
+    },
+    "aliases": [
+      "אליום"
+    ],
+    "boughtAs": "stem"
+  },
+  {
+    "id": "mimosa",
+    "category": "flower",
+    "names": {
+      "he": "מימוזה",
+      "ru": "Мимоза",
+      "en": "Mimosa"
+    },
+    "aliases": [
+      "שיטה"
+    ],
+    "boughtAs": "stem"
+  },
+  {
+    "id": "lavender",
+    "category": "flower",
+    "names": {
+      "he": "לבנדר",
+      "ru": "Лаванда",
+      "en": "Lavender"
+    },
+    "aliases": [],
+    "boughtAs": "stem"
+  },
+  {
+    "id": "astilbe",
+    "category": "flower",
+    "names": {
+      "he": "אסטילבה",
+      "ru": "Астильба",
+      "en": "Astilbe"
+    },
+    "aliases": [],
+    "boughtAs": "stem"
+  },
+  {
+    "id": "sweet-pea",
+    "category": "flower",
+    "names": {
+      "he": "טופח ריחני",
+      "ru": "Душистый горошек",
+      "en": "Sweet pea"
+    },
+    "aliases": [],
+    "boughtAs": "stem"
+  },
+  {
+    "id": "veronica",
+    "category": "flower",
+    "names": {
+      "he": "ורוניקה",
+      "ru": "Вероника",
+      "en": "Veronica"
+    },
+    "aliases": [],
+    "boughtAs": "stem"
+  },
+  {
+    "id": "cotton",
+    "category": "flower",
+    "names": {
+      "he": "כותנה",
+      "ru": "Хлопок",
+      "en": "Cotton"
+    },
+    "aliases": [],
+    "boughtAs": "stem"
+  },
+  {
+    "id": "ruscus",
+    "category": "greenery",
+    "names": {
+      "he": "רוסקוס",
+      "ru": "Рускус",
+      "en": "Ruscus"
+    },
+    "aliases": [],
+    "boughtAs": "stem"
+  },
+  {
+    "id": "pittosporum",
+    "category": "greenery",
+    "names": {
+      "he": "פיטוספורום",
+      "ru": "Питтоспорум",
+      "en": "Pittosporum"
+    },
+    "aliases": [],
+    "boughtAs": "stem"
+  },
+  {
+    "id": "salal",
+    "category": "greenery",
+    "names": {
+      "he": "סלאל",
+      "ru": "Салал",
+      "en": "Salal"
+    },
+    "aliases": [],
+    "boughtAs": "stem"
+  },
+  {
+    "id": "monstera",
+    "category": "greenery",
+    "names": {
+      "he": "מונסטרה",
+      "ru": "Монстера",
+      "en": "Monstera leaf"
+    },
+    "aliases": [],
+    "boughtAs": "stem"
+  },
+  {
+    "id": "aspidistra",
+    "category": "greenery",
+    "names": {
+      "he": "אספידיסטרה",
+      "ru": "Аспидистра",
+      "en": "Aspidistra"
+    },
+    "aliases": [],
+    "boughtAs": "stem"
+  },
+  {
+    "id": "myrtle",
+    "category": "greenery",
+    "names": {
+      "he": "הדס",
+      "ru": "Мирт",
+      "en": "Myrtle"
+    },
+    "aliases": [],
+    "boughtAs": "stem"
+  },
+  {
+    "id": "pistacia",
+    "category": "greenery",
+    "names": {
+      "he": "פיסטוקה",
+      "ru": "Фисташка (пистация)",
+      "en": "Pistacia"
+    },
+    "aliases": [
+      "פיסטציה"
+    ],
+    "boughtAs": "stem"
+  },
+  {
+    "id": "ivy",
+    "category": "greenery",
+    "names": {
+      "he": "קיסוס",
+      "ru": "Плющ",
+      "en": "Ivy"
+    },
+    "aliases": [],
+    "boughtAs": "stem"
+  },
+  {
+    "id": "olive",
+    "category": "greenery",
+    "names": {
+      "he": "זית",
+      "ru": "Олива",
+      "en": "Olive branch"
+    },
+    "aliases": [],
+    "boughtAs": "stem"
+  },
+  {
+    "id": "bear-grass",
+    "category": "greenery",
+    "names": {
+      "he": "בר גראס",
+      "ru": "Берграсс",
+      "en": "Bear grass"
+    },
+    "aliases": [],
+    "boughtAs": "stem"
+  },
+  {
+    "id": "steel-grass",
+    "category": "greenery",
+    "names": {
+      "he": "סטיל גראס",
+      "ru": "Стил грасс",
+      "en": "Steel grass"
+    },
+    "aliases": [],
+    "boughtAs": "stem"
+  },
+  {
+    "id": "eucalyptus-cinerea",
+    "category": "greenery",
+    "names": {
+      "he": "אקליפטוס סינריאה",
+      "ru": "Эвкалипт цинерея",
+      "en": "Eucalyptus cinerea"
+    },
+    "aliases": [],
+    "boughtAs": "stem"
+  },
+  {
+    "id": "eucalyptus-parvifolia",
+    "category": "greenery",
+    "names": {
+      "he": "אקליפטוס פרביפוליה",
+      "ru": "Эвкалипт парвифолия",
+      "en": "Eucalyptus parvifolia"
+    },
+    "aliases": [],
+    "boughtAs": "stem"
+  },
+  {
+    "id": "palm-leaf",
+    "category": "greenery",
+    "names": {
+      "he": "עלה דקל",
+      "ru": "Пальмовый лист",
+      "en": "Palm leaf"
+    },
+    "aliases": [
+      "דקל"
+    ],
+    "boughtAs": "stem"
+  }
+]

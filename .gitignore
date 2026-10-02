@@ -1,0 +1,19 @@
+node_modules
+dist
+dev-dist
+.DS_Store
+*.log
+
+# Personal business data (prices, invoices) — never publish
+private
+
+# Local tool settings for this Mac
+.claude
+
+# Price tables and backups saved anywhere in the project — personal data, never publish
+my-prices*.xlsx
+bouquet-prices-*.xlsx
+bouquet-calculator-backup-*.json
+
+# Build caches
+*.tsbuildinfo
