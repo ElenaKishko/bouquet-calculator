@@ -26,10 +26,17 @@ jobs:
           cache: npm
       - run: npm ci
       - run: npm test
+      # A repository named "<owner>.github.io" is served at the site root; any other
+      # repository at "/<repository>/".
+      - name: Work out the site address
+        run: |
+          repo="${{ github.event.repository.name }}"
+          owner="${{ github.repository_owner }}"
+          owner="${owner,,}"
+          if [[ "$repo" == *.github.io ]]; then base="/"; else base="/$repo/"; fi
+          echo "BASE_PATH=$base" >> "$GITHUB_ENV"
+          echo "SITE_URL=https://$owner.github.io$base" >> "$GITHUB_ENV"
       - run: npm run build
-        env:
-          BASE_PATH: /${{ github.event.repository.name }}/
-          SITE_URL: https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/
       - uses: actions/upload-pages-artifact@v5
         with:
           path: dist
