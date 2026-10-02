@@ -22,19 +22,17 @@ function isUiLocale(value: unknown): value is UiLocale {
   return typeof value === 'string' && (UI_LOCALES as readonly string[]).includes(value);
 }
 
+/** The app opens in Hebrew until the florist picks another language (globe button in the header). */
+export const DEFAULT_LOCALE: UiLocale = 'he';
+
 function detectInitialLocale(): UiLocale {
   try {
     const saved = localStorage.getItem(STORAGE_KEY);
     if (isUiLocale(saved)) return saved;
   } catch {
-    // Storage may be unavailable (private mode); fall back to the browser language.
+    // Storage may be unavailable (private mode): use the default.
   }
-  for (const tag of navigator.languages ?? [navigator.language]) {
-    const base = tag.toLowerCase().split('-')[0];
-    if (base === 'iw') return 'he';
-    if (isUiLocale(base)) return base;
-  }
-  return 'en';
+  return DEFAULT_LOCALE;
 }
 
 interface I18nValue {

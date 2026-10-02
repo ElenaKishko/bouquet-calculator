@@ -1,4 +1,5 @@
 import { useCallback, useRef, useState, type ReactNode } from 'react';
+import { LanguageButton } from './components/LanguageButton';
 import { useI18n } from './i18n';
 import { isInAppBrowser, isIos, isStandalone, useInstallPrompt } from './platform';
 import { reloadWithUpdate, useUpdateAvailable } from './pwaUpdate';
@@ -87,6 +88,7 @@ export function App() {
     <div className="app">
       <header className="app-header">
         <h1 className="app-title">{t.appName}</h1>
+        <LanguageButton />
       </header>
 
       <main className="app-main" ref={mainRef}>

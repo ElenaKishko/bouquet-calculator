@@ -173,6 +173,12 @@ Each item has:
 ## 9. Interface language
 
 - **v1 ships with three UI languages — English, Hebrew, Russian — with a switcher.**
+- **Hebrew is the default** for the interface and dictation on first launch,
+  whatever the phone's language.
+- A globe button in the header (every screen) switches the language; each
+  option is written in its own language, so people who don't read Hebrew can
+  find theirs. Switching the interface also switches the dictation language
+  (it can be changed separately in Settings).
 - All UI strings are externalized (i18n) from day one.
 - Right-to-left layout support (Hebrew) from day one.
 - Additional UI languages can be added later by adding a translation file.

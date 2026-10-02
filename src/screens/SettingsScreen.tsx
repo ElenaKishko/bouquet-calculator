@@ -9,10 +9,12 @@ import { useRecognition } from '../speech/RecognitionProvider';
 import { useAppStore } from '../store/AppStore';
 import { backupFileName, createBackup, readBackup } from '../store/backup';
 import { APP_VERSION } from '../version';
+import { useChangeLanguage } from '../useChangeLanguage';
 import { SpeechTest } from './SpeechTest';
 
 export function SettingsScreen() {
-  const { t, locale, setLocale } = useI18n();
+  const { t, locale } = useI18n();
+  const changeLanguage = useChangeLanguage();
   const { settings, overrides, updateSettings, replaceAll } = useAppStore();
   const recognition = useRecognition();
   const [message, setMessage] = useState<{ text: string; danger?: boolean } | null>(null);
@@ -52,11 +54,7 @@ export function SettingsScreen() {
               type="button"
               lang={code}
               aria-pressed={code === locale}
-              onClick={() => {
-                setLocale(code);
-                // Speak in the interface language by default; it can still be changed below.
-                updateSettings({ whisperLanguage: code });
-              }}
+              onClick={() => changeLanguage(code)}
             >
               {LOCALE_NAMES[code]}
             </button>
