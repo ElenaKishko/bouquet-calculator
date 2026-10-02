@@ -20,7 +20,8 @@ calculates the sale price of the bouquet from the florist's own price table.
 
 - Distributed as a link (e.g. shared in WhatsApp). Installed via
   "Install app" (Android / Chrome) or "Share → Add to Home Screen" (iPhone / Safari).
-- Hosted on free static hosting (Cloudflare Pages or GitHub Pages).
+- Hosted on GitHub Pages (free): https://elenakishko.github.io/bouquet-calculator/ —
+  deployed automatically on every push to `main`.
 - No backend, no user accounts. All data is stored locally on the device.
 - Works offline after first load (except speech recognition, which may need internet).
 - On iPhone, show a one-time illustrated hint explaining how to install.

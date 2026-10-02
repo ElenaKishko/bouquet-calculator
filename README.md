@@ -23,18 +23,24 @@ npm run catalog    # rebuild src/data/catalog.json from data/catalog-draft.xlsx
 - `private/` — the florist's own prices and invoices. Git-ignored; never bundled or published.
   Prices get into the app through **Prices → Load from Excel** on the phone.
 
-## Testing on real phones
+## Publishing
 
-Microphone access requires HTTPS, so phones can't use the plain local address.
-Serve the production build and open a temporary HTTPS tunnel (free, no account):
+The app is published on GitHub Pages: **https://elenakishko.github.io/bouquet-calculator/**
+
+Every push to `main` runs `.github/workflows/deploy.yml`: tests, build (with the
+repository path as the base URL), deploy. Installed apps then show
+"A new version is ready" and update when the florist taps it.
+
+## Testing a build on a phone before publishing
+
+Microphone access requires HTTPS. For a quick check of unpublished changes,
+serve the build and open a temporary tunnel (free, no account; the link changes
+every time and app data is stored per address):
 
 ```bash
 npm run build && npm run preview -- --port 4173
 cloudflared tunnel --url http://localhost:4173
 ```
-
-`cloudflared` prints a `https://….trycloudflare.com` link that works while the
-Mac and the tunnel are running. Install `cloudflared` with `brew install cloudflared`.
 
 ## Project layout
 

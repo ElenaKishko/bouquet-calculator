@@ -4,11 +4,17 @@ import { VitePWA } from 'vite-plugin-pwa';
 
 // Where the app lives: "/" locally, "/<repository>/" on GitHub Pages (set by the deploy workflow).
 const base = process.env.BASE_PATH ?? '/';
+// Full public address, so link previews (WhatsApp) can show the icon. Set by the deploy workflow.
+const siteUrl = process.env.SITE_URL ?? base;
 
 export default defineConfig({
   base,
   plugins: [
     react(),
+    {
+      name: 'link-preview-urls',
+      transformIndexHtml: (html) => html.replaceAll('__SITE_URL__', siteUrl),
+    },
     VitePWA({
       registerType: 'prompt',
       workbox: {
