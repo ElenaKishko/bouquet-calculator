@@ -93,8 +93,14 @@ export function ItemEditor({ item, isNew, onClose }: ItemEditorProps) {
       const changedNames = Object.fromEntries(
         Object.entries(trimmedNames).filter(([language, name]) => base.names[language as NameLanguage] !== name),
       );
+      const ownPrice = <K extends keyof typeof prices>(key: K) =>
+        key !== 'hidden' && prices[key] === base[key as keyof typeof base] ? undefined : prices[key];
       const patch: ItemPatch = {
-        ...prices,
+        stemsPerBunch: ownPrice('stemsPerBunch'),
+        purchasePrice: ownPrice('purchasePrice'),
+        multiplier: ownPrice('multiplier'),
+        fixedSalePrice: ownPrice('fixedSalePrice'),
+        hidden: prices.hidden,
         names: Object.keys(changedNames).length ? changedNames : undefined,
         aliases: draft.aliases.join('|') === base.aliases.join('|') ? undefined : draft.aliases,
         category: category === base.category ? undefined : category,

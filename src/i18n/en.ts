@@ -62,6 +62,12 @@ export const en = {
     editPrice: (name: string) => `Edit the price of ${name}`,
     stemsNeedCount: 'To price single stems, enter how many stems are in a pack on the Prices tab.',
   },
+  welcome: {
+    title: 'Welcome!',
+    text: 'The app already has sample prices, so you can start right away. Check them and set your own on the Prices tab: tap an item to change its price, or load your price list from Excel.',
+    openPrices: 'Open prices',
+    dismiss: 'Got it',
+  },
   history: {
     title: 'Recent bouquets',
     today: (count: number, total: string) => `Today: ${count} ${count === 1 ? 'bouquet' : 'bouquets'} · ${total}`,

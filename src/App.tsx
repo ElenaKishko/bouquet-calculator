@@ -110,7 +110,7 @@ export function App() {
 
         {ready && (
           <div key={tab} className={slide ? `screen-slide slide-${slide}` : 'screen-slide'}>
-            {tab === 'calculator' && <CalculatorScreen />}
+            {tab === 'calculator' && <CalculatorScreen onOpenPrices={() => openTab('prices')} />}
             {tab === 'catalog' && <CatalogScreen />}
             {tab === 'prices' && <PricesScreen />}
             {tab === 'settings' && <SettingsScreen />}

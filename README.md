@@ -20,8 +20,9 @@ npm run catalog    # rebuild src/data/catalog.json from data/catalog-draft.xlsx
 ## Data
 
 - `data/catalog-draft.xlsx` — built-in catalog (names in he/ru/en, no prices). Edit it, then run `npm run catalog`.
-- `private/` — the florist's own prices and invoices. Git-ignored; never bundled or published.
-  Prices get into the app through **Prices → Load from Excel** on the phone.
+- `private/my-prices.xlsx` — the price table used as **default prices** in the app
+  (`npm run catalog` builds them into `src/data/catalog.json`, which is public).
+  The folder itself (invoices, working copies) is git-ignored.
 
 ## Publishing
 

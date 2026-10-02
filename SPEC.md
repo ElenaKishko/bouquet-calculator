@@ -106,8 +106,15 @@ calculates the sale price of the bouquet from the florist's own price table.
   florist before release.
 - Draft: `data/catalog-draft.xlsx` — 45 items from the user's supplier delivery
   notes (16–23 June 2026) + 39 common items. Under review by the user.
-- The user's own purchase prices live in `private/my-prices.xlsx`. `private/` is
-  git-ignored and must never be published or bundled into the app.
+- **Default prices ship with the app** (decision 2026-10-02): every new florist
+  starts with ready prices, so the app is usable immediately; florists then
+  adjust them. Source: the user's price table (`private/my-prices.xlsx`), built
+  into `src/data/catalog.json` by `npm run catalog`. The user knowingly accepted
+  that these prices are public (in the app and the public repository) — easier
+  onboarding matters more. A florist's own price always wins over the default;
+  florists who didn't change a price receive updated defaults automatically.
+- A one-time welcome card explains that the prices are samples and opens the
+  Prices tab.
 
 ## 6. Pricing
 

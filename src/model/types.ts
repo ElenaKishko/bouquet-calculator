@@ -26,6 +26,14 @@ export interface CatalogItem {
   /** Items in the same group feed a group average (e.g. standard rose varieties). */
   group?: string;
   priceRule?: AverageOfGroup;
+  /**
+   * Default prices shipped with the app, so florists can start right away.
+   * The florist's own prices (ItemOverride) always win over these.
+   */
+  stemsPerBunch?: number;
+  purchasePrice?: number;
+  multiplier?: number;
+  fixedSalePrice?: number;
 }
 
 /** The florist's data for one item: changes to a built-in item, or a whole custom item. */

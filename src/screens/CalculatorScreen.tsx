@@ -5,6 +5,7 @@ import { useEffect, useMemo, useRef, useState } from 'react';
 import { ItemPhoto } from '../components/ItemPhoto';
 import { BouquetHistory } from '../components/BouquetHistory';
 import { ItemPicker } from '../components/ItemPicker';
+import { WelcomeCard } from '../components/WelcomeCard';
 import { Sheet } from '../components/Sheet';
 import { ItemEditor } from './ItemEditor';
 import { useI18n } from '../i18n';
@@ -67,7 +68,7 @@ function loadBouquet(): Bouquet {
 
 type Phase = 'idle' | 'recording' | 'recognizing';
 
-export function CalculatorScreen() {
+export function CalculatorScreen({ onOpenPrices }: { onOpenPrices: () => void }) {
   const { t, locale } = useI18n();
   const { items, settings, learnAlias } = useAppStore();
   const recognition = useRecognition();
@@ -247,6 +248,7 @@ export function CalculatorScreen() {
 
   return (
     <div className="screen calculator">
+      <WelcomeCard onOpenPrices={onOpenPrices} />
       {!modelReady && recognition.downloadedBefore && recognition.status === 'loading' ? (
         // The model is only being read from the phone: a short word instead of the download explanation.
         <p className="muted loading-line" aria-live="polite">

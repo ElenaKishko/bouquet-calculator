@@ -1,15 +1,24 @@
-// Converts the reviewed catalog spreadsheet into the app's built-in catalog.
+// Converts the reviewed catalog spreadsheet (and the default price table) into the
+// app's built-in catalog.
 //
-//   npm run catalog            (reads data/catalog-draft.xlsx → src/data/catalog.json)
+//   npm run catalog [catalog.xlsx] [prices.xlsx]
+//     defaults: data/catalog-draft.xlsx and private/my-prices.xlsx → src/data/catalog.json
 //
-// Expected columns on the "Catalog" sheet (by header name):
+// Catalog sheet "Catalog" (by header name):
 //   ID, Category, Hebrew, Russian, English, Other spoken names, Bought as
 // Rows without an ID get one generated from the English (or Russian / Hebrew) name.
+//
+// Price sheet "My prices" (header row starts with "ID"; same layout as the app's
+// Excel export): Purchase price (₪), Stems per bunch, Own multiplier,
+// Fixed sale price per stem (₪). These become the default prices every new
+// florist starts with; a florist's own prices always win in the app.
+// Note: the built catalog is public (it ships in the app and in the repository).
 
 import { readSheet } from 'read-excel-file/node';
-import { writeFileSync } from 'node:fs';
+import { existsSync, writeFileSync } from 'node:fs';
 
 const INPUT = process.argv[2] ?? 'data/catalog-draft.xlsx';
+const PRICES = process.argv[3] ?? 'private/my-prices.xlsx';
 const OUTPUT = 'src/data/catalog.json';
 
 /** Standard rose varieties: a plain "rose" is priced at their average. */
@@ -49,6 +58,41 @@ const col = {
   boughtAs: header.findIndex((title) => /^(bought as|unit)$/i.test(title)),
 };
 
+function number(value) {
+  if (typeof value === 'number' && Number.isFinite(value)) return value;
+  const parsed = Number(text(value).replace(',', '.'));
+  return text(value) && Number.isFinite(parsed) ? parsed : undefined;
+}
+
+/** Default prices by item ID, from the price table (if there is one). */
+async function readDefaultPrices(path) {
+  if (!existsSync(path)) return new Map();
+  const sheet = await readSheet(path, 'My prices');
+  const headerRow = sheet.findIndex((row) => text(row[0]).toLowerCase() === 'id');
+  if (headerRow < 0) throw new Error(`No "ID" header in ${path}`);
+  const titles = sheet[headerRow].map((cell) => text(cell).toLowerCase());
+  const at = (title) => titles.indexOf(title.toLowerCase());
+  const columns = {
+    purchasePrice: at('Purchase price (₪)'),
+    stemsPerBunch: at('Stems per bunch'),
+    multiplier: at('Own multiplier'),
+    fixedSalePrice: at('Fixed sale price per stem (₪)'),
+  };
+  const prices = new Map();
+  for (const row of sheet.slice(headerRow + 1)) {
+    const id = text(row[0]);
+    if (!id) continue;
+    const entry = {};
+    for (const [field, index] of Object.entries(columns)) {
+      const value = index >= 0 ? number(row[index]) : undefined;
+      if (value != null) entry[field] = value;
+    }
+    if (Object.keys(entry).length) prices.set(id, entry);
+  }
+  return prices;
+}
+
+const defaultPrices = await readDefaultPrices(PRICES);
 const groupOf = new Map(Object.entries(GROUPS).flatMap(([group, ids]) => ids.map((id) => [id, group])));
 const items = [];
 const seen = new Set();
@@ -84,8 +128,10 @@ for (const row of rows.slice(1)) {
   if (groupOf.has(id)) item.group = groupOf.get(id);
   const averaged = Object.entries(AVERAGE_ITEMS).find(([, itemId]) => itemId === id);
   if (averaged) item.priceRule = { averageOfGroup: averaged[0] };
+  Object.assign(item, defaultPrices.get(id));
   items.push(item);
 }
 
 writeFileSync(OUTPUT, JSON.stringify(items, null, 2) + '\n');
-console.log(`${items.length} items → ${OUTPUT}`);
+const priced = items.filter((item) => item.purchasePrice != null || item.fixedSalePrice != null).length;
+console.log(`${items.length} items (${priced} with default prices) → ${OUTPUT}`);
