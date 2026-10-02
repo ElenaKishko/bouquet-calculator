@@ -10,7 +10,7 @@ import { useAppStore } from '../store/AppStore';
 import { backupFileName, createBackup, readBackup } from '../store/backup';
 import { APP_VERSION } from '../version';
 import { useChangeLanguage } from '../useChangeLanguage';
-import { SpeechTest } from './SpeechTest';
+import { SpeechCheck } from '../components/SpeechCheck';
 
 export function SettingsScreen() {
   const { t, locale } = useI18n();
@@ -133,7 +133,7 @@ export function SettingsScreen() {
       <button type="button" className="link-button" onClick={() => setDiagnostics(!diagnostics)}>
         {diagnostics ? t.settings.hideDiagnostics : t.settings.diagnostics}
       </button>
-      {diagnostics && <SpeechTest />}
+      {diagnostics && <SpeechCheck />}
 
       <p className="muted small version">{t.settings.version(APP_VERSION)}</p>
     </div>

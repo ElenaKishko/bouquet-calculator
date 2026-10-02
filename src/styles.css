@@ -754,6 +754,17 @@ ul {
   min-height: 48px;
 }
 
+.speech-check,
+.check-result {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.check-heard {
+  font-size: 18px;
+}
+
 .loading-line {
   text-align: center;
 }
