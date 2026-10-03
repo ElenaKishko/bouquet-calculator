@@ -30,13 +30,18 @@ calculates the sale price of the bouquet from the florist's own price table.
   Chrome / Safari.
 - Can be wrapped later into native store apps (Capacitor) without a rewrite, if ever needed.
 - Updates: the app checks for a new version on launch and whenever it returns to
-  the screen. The prototype reloads itself immediately; the real app must not
-  reload mid-dictation — show "New version available" and apply it when idle.
+  the screen. It must never reload mid-dictation. Since v0.7.5 a new version
+  switches on by itself at moments that interrupt nothing: within 15 s of opening
+  the app (or bringing it back), or when it goes to the background — and only if
+  no recording / recognition, first model download, open panel or typed text
+  would be lost. The current bouquet and the open tab survive the reload.
+  Otherwise the banner "A new version is ready · Update" is shown (it is applied
+  by itself the next time the app goes to the background).
 - The "Update" button must never do nothing (v0.7.4). iPhone home-screen apps
   don't always report that the new version took over, so the app reloads as soon
   as the new version is active, or after 2.5 s at the latest. If the new version
   is still waiting after that reload, the banner asks the florist to close the
-  app completely and open it again.
+  app completely and open it again (and the app doesn't retry by itself).
 - The installed icon is tied to the app's address. A permanent address is needed
   before florists install it (temporary test links change).
 

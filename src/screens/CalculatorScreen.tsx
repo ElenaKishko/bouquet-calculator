@@ -110,11 +110,14 @@ export function CalculatorScreen({ onOpenPrices }: { onOpenPrices: () => void })
     [],
   );
 
-  // While recording, a sideways swipe must not switch tabs (that would cancel the recording).
+  // While recording, a sideways swipe must not switch tabs (that would cancel the recording),
+  // and while recording or recognizing, an update must not reload the app.
   useEffect(() => {
     document.body.dataset.recording = String(phase === 'recording');
+    document.body.dataset.busy = String(phase !== 'idle');
     return () => {
       document.body.dataset.recording = 'false';
+      document.body.dataset.busy = 'false';
     };
   }, [phase]);
 

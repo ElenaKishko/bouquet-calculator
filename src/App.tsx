@@ -14,6 +14,26 @@ type Tab = 'calculator' | 'catalog' | 'prices' | 'settings';
 
 const TAB_ORDER: Tab[] = ['calculator', 'catalog', 'prices', 'settings'];
 
+// The open tab survives a reload (e.g. an automatic update while the app is in the background).
+const TAB_KEY = 'open-tab';
+
+function loadTab(): Tab {
+  try {
+    const saved = sessionStorage.getItem(TAB_KEY) as Tab | null;
+    return saved && TAB_ORDER.includes(saved) ? saved : 'calculator';
+  } catch {
+    return 'calculator';
+  }
+}
+
+function saveTab(tab: Tab): void {
+  try {
+    sessionStorage.setItem(TAB_KEY, tab);
+  } catch {
+    // Not critical: after a reload the app just opens on the calculator.
+  }
+}
+
 const TAB_ICONS: Record<Tab, ReactNode> = {
   calculator: (
     <>
@@ -46,7 +66,7 @@ const TAB_ICONS: Record<Tab, ReactNode> = {
 export function App() {
   const { t } = useI18n();
   const { ready } = useAppStore();
-  const [tab, setTab] = useState<Tab>('calculator');
+  const [tab, setTab] = useState<Tab>(loadTab);
   /** Which way the new screen slides in: from the next tab's side or the previous one's. */
   const [slide, setSlide] = useState<'next' | 'prev' | null>(null);
   const mainRef = useRef<HTMLElement>(null);
@@ -56,6 +76,7 @@ export function App() {
       if (next === tab) return;
       setSlide(TAB_ORDER.indexOf(next) > TAB_ORDER.indexOf(tab) ? 'next' : 'prev');
       setTab(next);
+      saveTab(next);
       window.scrollTo(0, 0);
     },
     [tab],

@@ -67,6 +67,11 @@ export function RecognitionProvider({ children }: { children: ReactNode }) {
     }
   }, [model]);
 
+  // A first download must not be cut short by an automatic update reload (pwaUpdate.ts).
+  useEffect(() => {
+    document.body.dataset.downloading = String(status === 'loading' && !wasDownloaded(model));
+  }, [status, model]);
+
   // A model downloaded before is in the browser cache: prepare it in the background.
   useEffect(() => {
     if (!storeReady || loadedModelRef.current === model) return;
