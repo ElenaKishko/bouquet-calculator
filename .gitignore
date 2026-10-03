@@ -17,3 +17,7 @@ bouquet-calculator-backup-*.json
 
 # Build caches
 *.tsbuildinfo
+
+# Supplier web pages saved for reference (their content and photos) — never publish
+/פרחי בוקי*
+*_files/

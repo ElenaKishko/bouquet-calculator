@@ -212,9 +212,14 @@ Each item has:
 
 - Light, pleasant, neutral tones. Two themes — light and dark — following the
   phone's setting.
-- New app icon in the same style.
+- App icon (done, 2026-10-03, v0.7.2): a flower whose five petals are gold
+  coins, a dark green centre with a dollar sign, on a pale sage background.
+  Designed by the user in Claude Design; the source is `public/favicon.svg`
+  (full-bleed square, artwork inside the maskable safe zone), and `npm run icons`
+  makes every size from it with no extra padding.
+- Still to do: the app's colours in the same style.
 - Process: the user sends 2–4 references → a page with 2–3 design directions
-  and 3–4 icon options → the user picks → implemented across the app.
+  → the user picks → implemented across the app.
 
 ## 10a. Photos
 
