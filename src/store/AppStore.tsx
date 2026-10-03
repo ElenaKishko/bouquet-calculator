@@ -15,6 +15,7 @@ import {
   saveSettings,
 } from './db';
 import { cachePhotoUrl, newPhotoId, shrinkPhoto } from './photos';
+import { backupNeeded, loadBackupStatus, saveBackupStatus, SNOOZE_MS, type BackupStatus } from './backupStatus';
 
 export const CATALOG = catalogData as CatalogItem[];
 
@@ -36,8 +37,13 @@ interface AppStoreValue {
   setPhoto: (id: string, file: Blob) => Promise<void>;
   removePhoto: (id: string) => void;
   updateSettings: (patch: Partial<Settings>) => void;
-  /** Replaces everything (restore from backup / import). */
-  replaceAll: (overrides: Record<string, ItemOverride>, settings: Settings) => void;
+  /** Replaces everything: restored from a backup file, or imported from Excel. */
+  replaceAll: (overrides: Record<string, ItemOverride>, settings: Settings, source: 'backup' | 'import') => void;
+  /** The florist has changes that no saved backup holds (see BackupReminder). */
+  backupNeeded: boolean;
+  lastBackupAt?: number;
+  markBackedUp: () => void;
+  snoozeBackupReminder: () => void;
 }
 
 const AppStoreContext = createContext<AppStoreValue | null>(null);
@@ -53,6 +59,7 @@ export function AppStoreProvider({ children }: { children: ReactNode }) {
   const [overrides, setOverrides] = useState<Record<string, ItemOverride>>({});
   const [settings, setSettings] = useState<Settings>(DEFAULT_SETTINGS);
   const loaded = useRef(false);
+  const [backupStatus, setBackupStatus] = useState<BackupStatus>(loadBackupStatus);
 
   useEffect(() => {
     void requestPersistentStorage();
@@ -72,24 +79,51 @@ export function AppStoreProvider({ children }: { children: ReactNode }) {
     if (loaded.current) void saveSettings(settings);
   }, [settings]);
 
+  useEffect(() => saveBackupStatus(backupStatus), [backupStatus]);
+
   const items = useMemo(() => mergeItems(CATALOG, overrides), [overrides]);
 
-  const updateItem = useCallback((id: string, patch: ItemPatch) => {
-    setOverrides((previous) => ({ ...previous, [id]: applyPatch(previous[id] ?? { id }, patch) }));
+  // Any change to the florist's own data is something a backup should hold.
+  const markChanged = useCallback(() => {
+    setBackupStatus((previous) => ({ ...previous, lastChangeAt: Date.now() }));
   }, []);
 
-  const addItem = useCallback((override: ItemOverride) => {
-    setOverrides((previous) => ({ ...previous, [override.id]: { ...override, custom: true } }));
+  const markBackedUp = useCallback(() => {
+    setBackupStatus((previous) => ({ ...previous, lastBackupAt: Date.now(), snoozedUntil: undefined }));
   }, []);
 
-  const removeOrResetItem = useCallback((id: string) => {
-    // Dropping the override deletes a custom item and returns a built-in one to catalog data.
-    setOverrides((previous) => {
+  const snoozeBackupReminder = useCallback(() => {
+    setBackupStatus((previous) => ({ ...previous, snoozedUntil: Date.now() + SNOOZE_MS }));
+  }, []);
+
+  const updateItem = useCallback(
+    (id: string, patch: ItemPatch) => {
+      markChanged();
+      setOverrides((previous) => ({ ...previous, [id]: applyPatch(previous[id] ?? { id }, patch) }));
+    },
+    [markChanged],
+  );
+
+  const addItem = useCallback(
+    (override: ItemOverride) => {
+      markChanged();
+      setOverrides((previous) => ({ ...previous, [override.id]: { ...override, custom: true } }));
+    },
+    [markChanged],
+  );
+
+  const removeOrResetItem = useCallback(
+    (id: string) => {
+      markChanged();
+      // Dropping the override deletes a custom item and returns a built-in one to catalog data.
+      setOverrides((previous) => {
       const { [id]: removed, ...rest } = previous;
-      if (removed?.photoId) void deletePhoto(removed.photoId);
-      return rest;
-    });
-  }, []);
+        if (removed?.photoId) void deletePhoto(removed.photoId);
+        return rest;
+      });
+    },
+    [markChanged],
+  );
 
   const learnAlias = useCallback(
     (id: string, alias: string) => {
@@ -108,31 +142,44 @@ export function AppStoreProvider({ children }: { children: ReactNode }) {
       const photoId = newPhotoId();
       await savePhoto(photoId, photo);
       cachePhotoUrl(photoId, photo);
+      markChanged();
       setOverrides((previous) => {
         const old = previous[id]?.photoId;
         if (old) void deletePhoto(old);
         return { ...previous, [id]: applyPatch(previous[id] ?? { id }, { photoId }) };
       });
     },
-    [],
+    [markChanged],
   );
 
-  const removePhoto = useCallback((id: string) => {
-    setOverrides((previous) => {
-      const old = previous[id]?.photoId;
-      if (old) void deletePhoto(old);
-      return { ...previous, [id]: applyPatch(previous[id] ?? { id }, { photoId: undefined }) };
-    });
-  }, []);
+  const removePhoto = useCallback(
+    (id: string) => {
+      markChanged();
+      setOverrides((previous) => {
+        const old = previous[id]?.photoId;
+        if (old) void deletePhoto(old);
+        return { ...previous, [id]: applyPatch(previous[id] ?? { id }, { photoId: undefined }) };
+      });
+    },
+    [markChanged],
+  );
 
   const updateSettings = useCallback((patch: Partial<Settings>) => {
     setSettings((previous) => ({ ...previous, ...patch }));
   }, []);
 
-  const replaceAll = useCallback((nextOverrides: Record<string, ItemOverride>, nextSettings: Settings) => {
-    setOverrides(nextOverrides);
-    setSettings(nextSettings);
-  }, []);
+  const replaceAll = useCallback(
+    (nextOverrides: Record<string, ItemOverride>, nextSettings: Settings, source: 'backup' | 'import') => {
+      // Data just restored from a backup file is already in that file.
+      if (source === 'backup') markBackedUp();
+      else markChanged();
+      setOverrides(nextOverrides);
+      setSettings(nextSettings);
+    },
+    [markBackedUp, markChanged],
+  );
+
+  const hasOwnChanges = Object.keys(overrides).length > 0;
 
   const value = useMemo<AppStoreValue>(
     () => ({
@@ -148,8 +195,29 @@ export function AppStoreProvider({ children }: { children: ReactNode }) {
       removePhoto,
       updateSettings,
       replaceAll,
+      backupNeeded: backupNeeded(backupStatus, hasOwnChanges, Date.now()),
+      lastBackupAt: backupStatus.lastBackupAt,
+      markBackedUp,
+      snoozeBackupReminder,
     }),
-    [ready, items, overrides, settings, updateItem, addItem, removeOrResetItem, learnAlias, setPhoto, removePhoto, updateSettings, replaceAll],
+    [
+      ready,
+      items,
+      overrides,
+      settings,
+      updateItem,
+      addItem,
+      removeOrResetItem,
+      learnAlias,
+      setPhoto,
+      removePhoto,
+      updateSettings,
+      replaceAll,
+      backupStatus,
+      hasOwnChanges,
+      markBackedUp,
+      snoozeBackupReminder,
+    ],
   );
 
   return <AppStoreContext.Provider value={value}>{children}</AppStoreContext.Provider>;

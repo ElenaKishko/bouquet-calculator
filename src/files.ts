@@ -2,16 +2,16 @@
 
 /**
  * Hands a file to the user. Phones get the share sheet (save to Files, send in
- * WhatsApp…); elsewhere it downloads.
+ * WhatsApp…); elsewhere it downloads. Resolves false if the user closed the share sheet.
  */
-export async function saveFile(blob: Blob, fileName: string): Promise<void> {
+export async function saveFile(blob: Blob, fileName: string): Promise<boolean> {
   const file = new File([blob], fileName, { type: blob.type });
   if (navigator.canShare?.({ files: [file] })) {
     try {
       await navigator.share({ files: [file], title: fileName });
-      return;
+      return true;
     } catch (error) {
-      if (error instanceof DOMException && error.name === 'AbortError') return; // closed the share sheet
+      if (error instanceof DOMException && error.name === 'AbortError') return false; // closed the share sheet
     }
   }
   const url = URL.createObjectURL(blob);
@@ -22,6 +22,7 @@ export async function saveFile(blob: Blob, fileName: string): Promise<void> {
   link.click();
   link.remove();
   window.setTimeout(() => URL.revokeObjectURL(url), 10_000);
+  return true;
 }
 
 /** Opens the system file picker and resolves with the chosen file (or null if cancelled). */

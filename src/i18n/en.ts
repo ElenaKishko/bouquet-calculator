@@ -68,6 +68,12 @@ export const en = {
     openPrices: 'Open prices',
     dismiss: 'Got it',
   },
+  reminder: {
+    title: 'Save a copy of your changes',
+    text: 'Your prices and changes are stored only on this phone. If you remove the app from the home screen, they are deleted with it. A saved copy brings everything back.',
+    save: 'Save a copy',
+    later: 'Later',
+  },
   check: {
     title: 'Speech check',
     hint: 'Say a phrase the way you dictate a bouquet, then tap Done. You will see what was heard and can listen to the recording.',
@@ -164,6 +170,10 @@ export const en = {
     backupHint: 'Saves prices, names and photos in one file. Keep it in Files or send it to yourself.',
     saveBackup: 'Save everything',
     restoreBackup: 'Restore from file',
+    backupWarning:
+      'Your prices, names and photos are stored only on this phone. Removing the app from the home screen deletes them too. Before removing it, tap “Save everything”; after installing it again, tap “Restore from file”.',
+    lastBackup: (date: string) => `Last saved copy: ${date}`,
+    noBackupYet: 'No copy saved yet.',
     restoreConfirm: 'Replace all current prices, names and photos with the ones from the file?',
     restored: 'Restored.',
     restoreFailed: (message: string) => `Couldn’t restore: ${message}`,

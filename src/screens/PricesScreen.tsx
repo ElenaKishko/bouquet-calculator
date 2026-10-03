@@ -1,6 +1,7 @@
 // The florist's price table (SPEC §10): purchase prices, multipliers, editing, Excel.
 
 import { useMemo, useState } from 'react';
+import { BackupReminder } from '../components/BackupReminder';
 import { ItemPhoto } from '../components/ItemPhoto';
 import { SearchBar } from '../components/SearchBar';
 import { saveFile, pickFile } from '../files';
@@ -75,7 +76,7 @@ export function PricesScreen() {
     if (!file) return;
     try {
       const result = await importPricesFromExcel(file, CATALOG, overrides);
-      replaceAll(result.overrides, { ...settings, ...result.settings });
+      replaceAll(result.overrides, { ...settings, ...result.settings }, 'import');
       setMessage({ text: t.prices.imported(result.itemCount) });
     } catch (error) {
       setMessage({
@@ -87,6 +88,7 @@ export function PricesScreen() {
 
   return (
     <div className="screen prices">
+      <BackupReminder />
       <section className="card multipliers">
         <h2 className="card-title">{t.prices.multipliers}</h2>
         <div className="multiplier-row">

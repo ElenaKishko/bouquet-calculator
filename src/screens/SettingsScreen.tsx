@@ -1,13 +1,14 @@
 // Settings (SPEC §10): interface language, speech recognition, backup.
 
 import { useState } from 'react';
-import { pickFile, saveFile } from '../files';
+import { pickFile } from '../files';
 import { LOCALE_NAMES, UI_LOCALES, useI18n } from '../i18n';
 import { CURRENCIES, currencyName } from '../model/currency';
 import type { Settings } from '../model/types';
 import { useRecognition } from '../speech/RecognitionProvider';
 import { useAppStore } from '../store/AppStore';
-import { backupFileName, createBackup, readBackup } from '../store/backup';
+import { readBackup } from '../store/backup';
+import { useSaveBackup } from '../store/useSaveBackup';
 import { APP_VERSION } from '../version';
 import { useChangeLanguage } from '../useChangeLanguage';
 import { SpeechCheck } from '../components/SpeechCheck';
@@ -15,7 +16,8 @@ import { SpeechCheck } from '../components/SpeechCheck';
 export function SettingsScreen() {
   const { t, locale } = useI18n();
   const changeLanguage = useChangeLanguage();
-  const { settings, overrides, updateSettings, replaceAll } = useAppStore();
+  const { settings, updateSettings, replaceAll, lastBackupAt } = useAppStore();
+  const saveBackup = useSaveBackup();
   const recognition = useRecognition();
   const [message, setMessage] = useState<{ text: string; danger?: boolean } | null>(null);
   const [diagnostics, setDiagnostics] = useState(false);
@@ -27,16 +29,12 @@ export function SettingsScreen() {
     error: t.settings.statusError,
   }[recognition.status];
 
-  const saveBackup = async () => {
-    await saveFile(await createBackup(overrides, settings), backupFileName());
-  };
-
   const restoreBackup = async () => {
     const file = await pickFile('.json,application/json');
     if (!file || !window.confirm(t.settings.restoreConfirm)) return;
     try {
       const backup = await readBackup(file);
-      replaceAll(backup.overrides, backup.settings);
+      replaceAll(backup.overrides, backup.settings, 'backup');
       setMessage({ text: t.settings.restored });
     } catch (error) {
       setMessage({ text: t.settings.restoreFailed(error instanceof Error ? error.message : String(error)), danger: true });
@@ -119,6 +117,12 @@ export function SettingsScreen() {
       <section className="card">
         <h2 className="card-title">{t.settings.backup}</h2>
         <p className="muted small">{t.settings.backupHint}</p>
+        <p className="notice notice-warning">{t.settings.backupWarning}</p>
+        <p className="muted small">
+          {lastBackupAt
+            ? t.settings.lastBackup(new Intl.DateTimeFormat(locale, { dateStyle: 'medium' }).format(lastBackupAt))
+            : t.settings.noBackupYet}
+        </p>
         <div className="actions-row">
           <button type="button" onClick={() => void saveBackup()}>
             {t.settings.saveBackup}

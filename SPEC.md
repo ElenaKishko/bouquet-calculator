@@ -176,6 +176,15 @@ Each item has:
 - **Export the price table to Excel (.xlsx)** for backup (important on iPhone:
   removing the home screen icon deletes the app's data).
 - **Import from Excel** to restore a backup or load prices prepared elsewhere.
+- **Save everything** (Settings) writes one file with prices, names, own items
+  and photos; **Restore from file** brings it back.
+- Removing the app from the home screen deletes its data (always on iPhone), and
+  the app can't tell when that happens. So (v0.7.3):
+  - Settings → Backup always says so, and shows the date of the last saved copy.
+  - When the florist has changes (prices, names, items, photos, Excel import)
+    that no saved copy holds, the Prices screen shows a card "Save a copy of your
+    changes" with **Save a copy** and **Later** (hides it for a week). Saving or
+    restoring a copy hides it until the next change.
 - Later: paste text copied from Google Lens (photo of a price list) and parse it.
 
 ## 9. Interface language
