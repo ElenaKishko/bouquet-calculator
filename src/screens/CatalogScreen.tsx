@@ -83,7 +83,7 @@ export function CatalogScreen() {
                 <button type="button" className="catalog-card" onClick={() => setOpened(item)}>
                   <ItemPhoto item={item} size="medium" />
                   <span className="catalog-name">{displayName(item, locale)}</span>
-                  <span className={price == null ? 'catalog-price muted' : 'catalog-price'}>
+                  <span className={price == null ? 'catalog-price no-price' : 'catalog-price'}>
                     {price == null
                       ? t.common.noPrice
                       : `${money(price)}${isPackPrice ? ` ${t.common.perPack}` : ''}`}

@@ -152,7 +152,7 @@ export function PricesScreen() {
                       </span>
                       {needsStemsPerBunch(item) && <span className="warning-text small">{t.prices.needStems}</span>}
                     </span>
-                    <span className={sale == null && packSale == null ? 'price-sale muted' : 'price-sale'}>
+                    <span className={sale == null && packSale == null ? 'price-sale no-price' : 'price-sale'}>
                       {sale != null
                         ? money(sale)
                         : packSale != null

@@ -11,6 +11,7 @@ private
 .claude
 
 # Price tables and backups saved anywhere in the project — personal data, never publish
+/*.xlsx
 my-prices*.xlsx
 bouquet-prices-*.xlsx
 bouquet-calculator-backup-*.json

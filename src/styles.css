@@ -1,23 +1,31 @@
+/* Light, airy theme (SPEC §10b): warm cream, thin lines, pistachio main buttons,
+   deep green accents and gold details, as on the app icon. A dark theme comes later. */
 :root {
-  --bg: #f7f5f0;
-  --surface: #ffffff;
-  --surface-muted: #efece4;
-  --text: #22211f;
-  --text-muted: #6b6a64;
-  --border: rgba(0, 0, 0, 0.1);
-  --accent: #0f6e56;
+  --bg: #fbf7f0;
+  --surface: #fffdf9;
+  --surface-muted: #f4ecdd;
+  --text: #2b2a22;
+  --text-muted: #8f8676;
+  --border: #eadfcc;
+  --accent: #2f5a43;
   --accent-text: #ffffff;
-  --accent-soft: #e1f5ee;
-  --flower-soft: #fbeaf0;
-  --flower-text: #993556;
-  --danger-bg: #fcebeb;
-  --danger-text: #791f1f;
-  --warning-bg: #faeeda;
-  --warning-text: #633806;
-  --radius: 14px;
+  --accent-soft: #eef3e6;
+  --primary: #d8eac0;
+  --primary-text: #2f4a38;
+  --primary-border: #c5dca8;
+  --gold: #a07a35;
+  --flower-soft: #f3ead8;
+  --flower-text: #7a5c24;
+  --greenery-soft: #e6efdc;
+  --greenery-text: #2f5a43;
+  --danger-bg: #f9e6e1;
+  --danger-text: #8a2c1f;
+  --warning-bg: #f8eedb;
+  --warning-text: #75531b;
+  --radius: 20px;
   --tab-bar-height: 64px;
 
-  color-scheme: light dark;
+  color-scheme: light;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Noto Sans', 'Noto Sans Hebrew', Arial,
     sans-serif;
   font-size: 16px;
@@ -25,26 +33,6 @@
   color: var(--text);
   background: var(--bg);
   -webkit-text-size-adjust: 100%;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --bg: #161615;
-    --surface: #222220;
-    --surface-muted: #2c2c2a;
-    --text: #f1efe8;
-    --text-muted: #a9a79f;
-    --border: rgba(255, 255, 255, 0.12);
-    --accent: #1d9e75;
-    --accent-text: #ffffff;
-    --accent-soft: #08392e;
-    --flower-soft: #4b1528;
-    --flower-text: #f4c0d1;
-    --danger-bg: #501313;
-    --danger-text: #f7c1c1;
-    --warning-bg: #412402;
-    --warning-text: #fac775;
-  }
 }
 
 * {
@@ -79,7 +67,7 @@ button {
   min-height: 44px;
   padding: 0 14px;
   border: 1px solid var(--border);
-  border-radius: 12px;
+  border-radius: 14px;
   background: var(--surface);
   cursor: pointer;
   touch-action: manipulation;
@@ -97,7 +85,7 @@ textarea {
   min-height: 44px;
   padding: 8px 12px;
   border: 1px solid var(--border);
-  border-radius: 12px;
+  border-radius: 14px;
   background: var(--surface);
   font-size: 17px;
 }
@@ -122,6 +110,12 @@ ul {
 
 .muted {
   color: var(--text-muted);
+}
+
+/* "No price" is a gentle gold note, not an alarm (also on the pack / stem switch). */
+.no-price,
+.unit-switch.no-price {
+  color: var(--gold);
 }
 
 .small {
@@ -152,11 +146,12 @@ ul {
   flex-shrink: 0;
   align-items: center;
   gap: 6px;
-  min-height: 40px;
+  min-height: 38px;
   padding: 0 12px;
   border: 1px solid var(--border);
-  border-radius: 20px;
+  border-radius: 999px;
   background: var(--surface);
+  color: var(--text-muted);
   font-size: 15px;
   cursor: pointer;
 }
@@ -175,8 +170,9 @@ ul {
 }
 
 .app-title {
-  font-size: 20px;
-  font-weight: 600;
+  font-size: 22px;
+  font-weight: 500;
+  letter-spacing: -0.3px;
 }
 
 .app-main {
@@ -263,6 +259,18 @@ ul {
   font-size: 12px;
 }
 
+/* A small dot over the active tab; every tab has the slot, so nothing moves. */
+.tab-bar button::before {
+  content: '';
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+}
+
+.tab-bar button[aria-current='page']::before {
+  background: var(--gold);
+}
+
 .tab-bar button span {
   max-width: 100%;
   overflow: hidden;
@@ -293,7 +301,7 @@ ul {
 
 .notice {
   padding: 12px 14px;
-  border-radius: var(--radius);
+  border-radius: 16px;
   background: var(--accent-soft);
   font-size: 15px;
 }
@@ -319,9 +327,10 @@ ul {
   width: 100%;
   min-height: 50px;
   border: none;
-  background: var(--accent);
-  color: var(--accent-text);
-  font-weight: 600;
+  border-radius: 999px;
+  background: var(--primary);
+  color: var(--primary-text);
+  font-weight: 500;
 }
 
 .primary-button.compact {
@@ -341,7 +350,7 @@ ul {
   border: none;
   background: transparent;
   color: var(--accent);
-  text-decoration: underline;
+  text-decoration: none;
 }
 
 .icon-button {
@@ -363,21 +372,25 @@ ul {
   display: flex;
   gap: 4px;
   padding: 3px;
-  border-radius: 12px;
-  background: var(--surface-muted);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: var(--surface);
 }
 
 .segmented button {
   flex: 1;
-  min-height: 38px;
+  min-height: 36px;
   border: none;
+  border-radius: 999px;
   background: transparent;
+  color: var(--text-muted);
   font-size: 15px;
 }
 
+/* Colour only: same size and weight, so nothing moves. */
 .segmented button[aria-pressed='true'] {
-  background: var(--surface);
-  font-weight: 600;
+  background: var(--primary);
+  color: var(--primary-text);
 }
 
 .search-input {
@@ -531,7 +544,7 @@ ul {
   gap: 2px;
   min-height: 72px;
   font-size: 18px;
-  font-weight: 600;
+  font-weight: 500;
 }
 
 .warning-text {
@@ -541,7 +554,8 @@ ul {
 .chip {
   min-height: 34px;
   padding: 0 12px;
-  border-radius: 17px;
+  border: none;
+  border-radius: 999px;
   background: var(--warning-bg);
   color: var(--warning-text);
   font-size: 14px;
@@ -572,7 +586,7 @@ ul {
   -webkit-user-drag: none;
   -webkit-touch-callout: none;
   user-select: none;
-  border-radius: 10px;
+  border-radius: 12px;
   object-fit: cover;
   background: var(--surface-muted);
 }
@@ -597,7 +611,7 @@ ul {
 .item-photo-empty {
   display: grid;
   place-items: center;
-  font-weight: 600;
+  font-weight: 400;
 }
 
 .item-photo-empty.is-flower {
@@ -606,8 +620,13 @@ ul {
 }
 
 .item-photo-empty.is-greenery {
-  background: var(--accent-soft);
-  color: var(--accent);
+  background: var(--greenery-soft);
+  color: var(--greenery-text);
+}
+
+/* Small photos and letters in lists are round. */
+.item-photo-small {
+  border-radius: 50%;
 }
 
 .item-photo-small.item-photo-empty {
@@ -640,7 +659,7 @@ ul {
   width: 100%;
   max-width: 640px;
   max-height: calc(100dvh - max(24px, env(safe-area-inset-top)));
-  border-radius: 18px 18px 0 0;
+  border-radius: 24px 24px 0 0;
   background: var(--bg);
 }
 
@@ -663,7 +682,7 @@ ul {
 
 .sheet-header h2 {
   font-size: 18px;
-  font-weight: 600;
+  font-weight: 500;
 }
 
 .sheet-body {
@@ -684,6 +703,7 @@ ul {
 
 .sheet-footer button {
   flex: 1;
+  border-radius: 999px;
 }
 
 /* Lists with photos */
@@ -725,7 +745,7 @@ ul {
 }
 
 .price-sale {
-  font-weight: 600;
+  font-variant-numeric: tabular-nums;
   white-space: nowrap;
 }
 
@@ -735,12 +755,12 @@ ul {
   display: flex;
   flex-direction: column;
   gap: 10px;
-  border-color: var(--accent);
+  border-color: var(--primary-border);
 }
 
 .welcome-title {
   font-size: 18px;
-  font-weight: 600;
+  font-weight: 500;
 }
 
 .welcome-actions {
@@ -752,6 +772,7 @@ ul {
 .welcome-actions button {
   width: 100%;
   min-height: 48px;
+  border-radius: 999px;
 }
 
 .speech-check,
@@ -788,18 +809,18 @@ ul {
   justify-content: center;
   gap: 10px;
   width: 100%;
-  min-height: 72px;
+  min-height: 62px;
   border: none;
-  border-radius: 20px;
-  background: var(--accent);
-  color: var(--accent-text);
-  font-size: 19px;
-  font-weight: 600;
+  border-radius: 999px;
+  background: var(--primary);
+  color: var(--primary-text);
+  font-size: 18px;
+  font-weight: 500;
 }
 
 .record-button.is-recording {
-  background: var(--danger-text);
-  color: var(--danger-bg);
+  background: var(--danger-bg);
+  color: var(--danger-text);
   animation: recording 1.4s ease-in-out infinite;
 }
 
@@ -856,8 +877,8 @@ ul {
   grid-column: 1 / -1;
   grid-template-columns: subgrid;
   align-items: center;
-  min-height: 60px;
-  padding-block: 6px;
+  min-height: 62px;
+  padding-block: 8px;
   border-bottom: 1px solid var(--border);
 }
 
@@ -875,25 +896,33 @@ ul {
 .stepper {
   display: flex;
   align-items: center;
-  gap: 4px;
+  gap: 6px;
 }
 
+/* Thin round buttons; a hidden margin keeps the tap target at least 40px. */
 .stepper button {
   width: 32px;
-  min-height: 36px;
+  height: 32px;
+  min-height: 0;
+  margin-block: 4px;
   padding: 0;
-  font-size: 20px;
+  border-radius: 50%;
+  color: var(--text-muted);
+  font-size: 18px;
+  font-weight: 300;
+  line-height: 1;
 }
 
 .quantity {
   /* Fixed width (up to 3 digits) keeps every stepper the same size. */
   width: 3ch;
-  font-weight: 600;
+  font-size: 17px;
+  font-variant-numeric: tabular-nums;
   text-align: center;
 }
 
 .line-total {
-  font-weight: 600;
+  font-variant-numeric: tabular-nums;
   text-align: end;
   white-space: nowrap;
 }
@@ -902,12 +931,17 @@ ul {
   display: flex;
   align-items: baseline;
   justify-content: space-between;
-  padding-block-start: 12px;
-  font-size: 20px;
+  padding-block-start: 14px;
+  color: var(--text-muted);
+  font-size: 16px;
 }
 
 .total strong {
-  font-size: 32px;
+  color: var(--text);
+  font-size: 44px;
+  font-weight: 300;
+  letter-spacing: -1px;
+  font-variant-numeric: tabular-nums;
 }
 
 .add-line-button {
@@ -916,7 +950,6 @@ ul {
   border-style: dashed;
   background: transparent;
   color: var(--accent);
-  font-weight: 600;
 }
 
 .bouquet .notice {
@@ -939,6 +972,7 @@ ul {
   width: 100%;
   height: 100%;
   padding: 8px;
+  border-radius: 18px;
   text-align: start;
 }
 
@@ -950,7 +984,6 @@ ul {
 .catalog-price {
   margin-top: auto;
   font-size: 18px;
-  font-weight: 600;
 }
 
 .item-details {
@@ -960,8 +993,8 @@ ul {
 }
 
 .details-price {
-  font-size: 24px;
-  font-weight: 600;
+  font-size: 28px;
+  font-weight: 300;
   text-align: center;
 }
 
@@ -1006,6 +1039,7 @@ ul {
   width: 100%;
   min-height: 56px;
   padding: 4px 6px;
+  border-radius: 16px;
   font-size: 14px;
   line-height: 1.25;
 }

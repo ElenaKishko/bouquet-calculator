@@ -227,18 +227,28 @@ Each item has:
   are ignored while a panel is open, while recording, in input fields, and at
   the screen edges (system gestures).
 
-## 10b. Visual design (planned)
+## 10b. Visual design
 
-- Light, pleasant, neutral tones. Two themes — light and dark — following the
-  phone's setting.
+- Light theme (done, 2026-10-03, v0.8.0), chosen by the user from three mockups
+  (variant C "warm cream" with a pistachio button): airy, thin 1px lines,
+  modern.
+  - Warm cream background `#fbf7f0`, near-white cards with a thin beige border
+    `#eadfcc` and large rounded corners.
+  - Main buttons (dictate, download, save…) are pistachio `#d8eac0` pills with
+    dark green text; links and the active tab are deep green `#2f5a43`.
+  - Gold `#a07a35` for small details: the dot over the active tab, "no price".
+  - Letters of items without a photo sit in round warm (flowers) or light green
+    (greenery) circles; quantity buttons are thin circles; the bouquet total is
+    large and light.
+  - System font in lighter weights (no extra download). Active states change
+    colour only, so nothing moves.
+- For now the light theme is used even when the phone is in dark mode. A dark
+  theme in the same style comes later and will follow the phone's setting.
 - App icon (done, 2026-10-03, v0.7.2): a flower whose five petals are gold
   coins, a dark green centre with a dollar sign, on a pale sage background.
   Designed by the user in Claude Design; the source is `public/favicon.svg`
   (full-bleed square, artwork inside the maskable safe zone), and `npm run icons`
   makes every size from it with no extra padding.
-- Still to do: the app's colours in the same style.
-- Process: the user sends 2–4 references → a page with 2–3 design directions
-  → the user picks → implemented across the app.
 
 ## 10a. Photos
 

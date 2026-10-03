@@ -142,7 +142,7 @@ export function App() {
       <nav className="tab-bar" aria-label={t.appName}>
         {tabs.map(([id, label]) => (
           <button key={id} type="button" aria-current={tab === id ? 'page' : undefined} onClick={() => openTab(id)}>
-            <svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round">
+            <svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
               {TAB_ICONS[id]}
             </svg>
             <span>{label}</span>

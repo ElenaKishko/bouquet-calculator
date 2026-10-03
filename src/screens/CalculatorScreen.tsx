@@ -378,14 +378,14 @@ export function CalculatorScreen({ onOpenPrices }: { onOpenPrices: () => void })
                       // Packs and stems: tap to switch if the phrase was understood the other way.
                       <button
                         type="button"
-                        className="unit-switch small"
+                        className={line.unitPrice == null ? 'unit-switch small no-price' : 'unit-switch small'}
                         aria-label={t.calculator.switchUnit}
                         onClick={() => setBouquet(switchUnit(bouquet, line.itemId, unit))}
                       >
                         {priceText} ⇄
                       </button>
                     ) : (
-                      <span className="muted small">{priceText}</span>
+                      <span className={line.unitPrice == null ? 'small no-price' : 'muted small'}>{priceText}</span>
                     )}
                   </div>
                   <div className="stepper">
