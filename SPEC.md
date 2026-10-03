@@ -32,6 +32,11 @@ calculates the sale price of the bouquet from the florist's own price table.
 - Updates: the app checks for a new version on launch and whenever it returns to
   the screen. The prototype reloads itself immediately; the real app must not
   reload mid-dictation — show "New version available" and apply it when idle.
+- The "Update" button must never do nothing (v0.7.4). iPhone home-screen apps
+  don't always report that the new version took over, so the app reloads as soon
+  as the new version is active, or after 2.5 s at the latest. If the new version
+  is still waiting after that reload, the banner asks the florist to close the
+  app completely and open it again.
 - The installed icon is tied to the app's address. A permanent address is needed
   before florists install it (temporary test links change).
 

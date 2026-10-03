@@ -23,6 +23,7 @@ export const en = {
   update: {
     available: 'A new version of the app is ready.',
     reload: 'Update',
+    stuck: 'The new version hasn’t switched on yet. Close the app completely (swipe it away in the app switcher) and open it again.',
   },
   calculator: {
     record: 'Dictate the bouquet',

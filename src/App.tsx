@@ -2,7 +2,7 @@ import { useCallback, useRef, useState, type ReactNode } from 'react';
 import { LanguageButton } from './components/LanguageButton';
 import { useI18n } from './i18n';
 import { isInAppBrowser, isIos, isStandalone, useInstallPrompt } from './platform';
-import { reloadWithUpdate, useUpdateAvailable } from './pwaUpdate';
+import { reloadWithUpdate, useUpdateState } from './pwaUpdate';
 import { CalculatorScreen } from './screens/CalculatorScreen';
 import { CatalogScreen } from './screens/CatalogScreen';
 import { PricesScreen } from './screens/PricesScreen';
@@ -73,7 +73,7 @@ export function App() {
   );
   const currentScreen = useCallback(() => mainRef.current?.querySelector<HTMLElement>('.screen-slide') ?? null, []);
   useSwipe(mainRef, onSwipe, currentScreen);
-  const updateAvailable = useUpdateAvailable();
+  const update = useUpdateState();
   const install = useInstallPrompt();
   const showIosInstallHint = isIos() && !isStandalone() && !isInAppBrowser();
 
@@ -92,9 +92,9 @@ export function App() {
       </header>
 
       <main className="app-main" ref={mainRef}>
-        {updateAvailable && (
+        {update !== 'none' && (
           <div className="notice update-banner">
-            <span>{t.update.available}</span>
+            <span>{update === 'stuck' ? t.update.stuck : t.update.available}</span>
             <button type="button" onClick={reloadWithUpdate}>
               {t.update.reload}
             </button>
